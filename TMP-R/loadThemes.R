@@ -13,7 +13,8 @@
 # limitations under the License.
 # =============================================================================
 
-#Theme for barplots topped with values. These are useful for displaying data about the part of the membership that is interested in a given sector of the economy.
+#Theme for barplots topped with values. These are useful for displaying data about
+#the part of the membership that is interested in a given sector of the economy.
 
 themeIDCN <- function(){
   theme(

@@ -13,7 +13,7 @@
 # limitations under the License.
 # =============================================================================
 
-#TMP-R
+#IDCN Targeted Demographics
 #Written by Jon Middleton
 #Membership Team, IDCN Copenhagen
 #May 2018

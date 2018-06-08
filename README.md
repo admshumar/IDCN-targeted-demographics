@@ -1,2 +1,2 @@
 # IDCN-targeted-demographics
-An R script that wrangles and analyzes IDCN Copenhagen's Talent Management Platform. The goal is to provide IDCN's local membership with summaries about IDCN members' desired job placements in the Danish economy.
+R scripts that wrangle and analyze IDCN Copenhagen's Talent Management Platform. One script provides IDCN's local membership with summaries about IDCN members' desired job placements in the Danish economy. Another automates the generation of the Membership Team Monthly Report.

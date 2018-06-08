@@ -18,7 +18,8 @@
 #Membership Team, IDCN Copenhagen
 #May 2018
 
-#Script that extracts and transforms IDCN Copenhagen's Talent Management Platform (TMP). The purpose is to visualize the desired job placements of IDCN partners.
+#Script that extracts and transforms IDCN Copenhagen's Talent Management Platform (TMP).
+#The purpose is to visualize the desired job placements of IDCN partners.
 
 #Clear console.
 cat("\014")

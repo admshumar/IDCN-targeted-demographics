@@ -34,3 +34,5 @@ library(ggplot2)
 #Provides a system for declaratively creating graphics 
 #(http://ggplot2.tidyverse.org/). All plots in this 
 #script are ggplots.
+
+library(stringr)

@@ -13,13 +13,12 @@
 # limitations under the License.
 # =============================================================================
 
-#IDCN Targeted Demographics
+#TMP-R
 #Written by Jon Middleton
 #Membership Team, IDCN Copenhagen
 #May 2018
 
-#Script that extracts and transforms IDCN Copenhagen's Talent Management Platform (TMP).
-#The purpose is to visualize the desired job placements of IDCN partners.
+#Script that extracts and transforms IDCN Copenhagen's Talent Management Platform (TMP). The purpose is to visualize the desired job placements of IDCN partners.
 
 #Clear console.
 cat("\014")
@@ -45,5 +44,9 @@ source("~/TMP-R/loadThemes.R")
 #Google Drive.
 source("~/TMP-R/extractTMP.R")
 
-#Create new data frames whose rows contain exactly one job field.
-source("~/TMP-R/transformTMP.R")
+#Construct subtables from the TMP that are relevant for TDP.
+source("~/TMP-R/getSubtables.R")
+
+#Create new data frames whose rows contain exactly one job field,
+#then plots all data from these data fields.
+source("~/TMP-R/TDP/transformandplotTMP.R")

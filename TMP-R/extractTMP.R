@@ -17,7 +17,7 @@
 gs_ls() 
 
 #Assign to TMP the Google Sheet with title "TDP Master Table".
-TMP <- gs_title("tmp14032018.xls") 
+TMP <- gs_title("TMP") 
 
 #Retrieve the titles of all the worksheets in the Google Sheet TMP.
 gs_ws_ls(TMP) 

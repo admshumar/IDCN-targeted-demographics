@@ -187,3 +187,4 @@ jobreport_fieldplot <- function(table, string)
     geom_bar(aes(fill=Education), position=position_dodge(width=0.9), stat="identity")
   #geom_col() 
 }
+

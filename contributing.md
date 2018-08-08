@@ -18,4 +18,5 @@ The Targeted Demographics Report summarizes the desired job placement outcomes o
 <h2>Monthly Report</h2>
 The Monthly Report gives information about the current state of a chapter's membership. It includes counts of active and inactive members, gives accounts of former and current volunteers, and tracks the job placement outcomes of inactive members. This requires the reporter to conduct many counts of various subsets of the membership, all of which are automated by the R scripts.
 
+
 MonthlyReport.R controls these procedures.

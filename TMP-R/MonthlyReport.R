@@ -44,14 +44,23 @@ ifelse(!dir.exists(getPlotDir),
        "FALSE")
 
 #Load libraries.
+<<<<<<< HEAD
 source("~/IDCN-talent-management-platform/TMP-R/loadLibraries.R")
 
+=======
+source("~/TMP-R/loadLibraries.R")
+>>>>>>> 5fc0a6cb78628dd528e13175c5cd7b9d8163b325
 
 #Format dates for display on graphs.
 source("~/IDCN-talent-management-platform/TMP-R/formatDate.R")
 
 #Load themes for graphs.
 source("~/IDCN-talent-management-platform/TMP-R/loadThemes.R")
+
+#Load fonts.
+#font_import()
+#loadfonts(device = "pdf", quiet = FALSE)
+fonts()
 
 #Load fonts.
 #font_import()
@@ -139,6 +148,78 @@ TMP_active_namesmails <- as.data.frame(TMP_active_namesmails)
 TMP_active_namesmails <- TMP_active_namesmails[order(TMP_active_namesmails[,2]),]
 
 
+<<<<<<< HEAD
+=======
+#Create a function that resizes the column widths of
+#an .xls file.
+sizeandsaveXLS <- function(df, sheetTitle, directory, filename) {
+  wb <- createWorkbook(type = "xlsx")
+  sheet <- createSheet(wb, sheetName = sheetTitle)
+  addDataFrame(df, sheet, row.names = FALSE)
+  setColumnWidth(sheet, colIndex = 1:2, colWidth = 20)
+  autoSizeColumn(sheet, colIndex = 3:ncol(df))
+  saveWorkbook(wb, file.path(directory, filename))
+}
+
+
+############################
+#SUBTABLES OF THE MEMBERSHIP
+############################
+#Construct a table consisting of all active IDCN partners. NOTE: without the code is.na(`Status comments`), R will drop any member for whom there is an empty status comment.
+TMP_active <- dplyr::filter(TMP, TMP[,10] == "Active", TMP[,43] != "Account rejected" | is.na(TMP[,43]))
+
+#Construct a table consisting of all inactive IDCN partners.
+TMP_inactive <- dplyr::filter(TMP, TMP[,10] == "Inactive", TMP[,43] != "Account rejected" | is.na(TMP[,43])) 
+
+#Construct a table consisting of all inactive IDCN partners who found a job. Since the values of `Status comments` that correspond to people who found a job consist of strings of the form "Job - <substring>", we are interested in isolating the substring "Job" to locate these people.
+TMP_employed <- dplyr::filter(TMP_inactive, grepl('Job', TMP_inactive[,43]))
+
+TMP_employed_corporate <- dplyr::filter(TMP_employed, grepl('Corporate', TMP_employed[,43]))
+
+names(TMP_employed_corporate)
+
+#Create a frequency table of partners employed at corporations.
+count_partners_employed_corporate <- 
+  group_by(
+    TMP_employed_corporate, 
+    str_match(TMP_employed_corporate[,43], '20\\d\\d')
+  ) %>% summarize(count = n())
+
+#RENAME COLUMN HEADERS
+TMP_employed_other <- dplyr::filter(TMP_employed, !grepl('Corporate', TMP_employed[,43]))
+
+#Create a frequency table of partner employed at companies that are not corporations.
+count_partners_employed_other <- 
+  group_by(
+    TMP_employed_other, 
+    str_match(TMP_employed_other[,43], '20\\d\\d')
+  ) %>% summarize(count = n())
+
+#Constructs a table consisting of all relocated IDCN partners.
+TMP_relocated <- dplyr::filter(TMP, TMP[,10] == "Inactive", TMP[,43] == "Relocation") 
+
+#Constructs a table consisting of all individuals who attempted to join IDCN but were rejected.
+TMP_rejected <- dplyr::filter(TMP, TMP[,43] == "Account rejected")
+
+
+##########################
+#SUBTABLES FOR OTHER TEAMS
+##########################
+
+#Active partners' names, ordered by surname
+TMP_active_names <- TMP_active_nonempty[,1:2]
+TMP_active_names_s <- TMP_active_names[order(TMP_active_names[,2]),]
+TMP_active_names_s <- TMP_active_names_s[,1:2]
+sizeandsaveXLS(TMP_active_names_s, 
+               "Active Partner Names", 
+               getReportDir, 
+               "TMP_active_names_s.xlsx")
+
+
+#Active partners' names and emails
+TMP_active_namesmails <- TMP_active_nonempty[, c(1:2,5)]
+TMP_active_namesmails <- TMP_active_namesmails[order(TMP_active_namesmails[,2]),]
+>>>>>>> 5fc0a6cb78628dd528e13175c5cd7b9d8163b325
 sizeandsaveXLS(TMP_active_namesmails, 
                "Active Partner Emails", 
                getReportDir, 

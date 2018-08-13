@@ -36,7 +36,4 @@ library(ggplot2)
 #script are ggplots.
 
 library(stringr)
-<<<<<<< HEAD
 
-=======
->>>>>>> 5fc0a6cb78628dd528e13175c5cd7b9d8163b325
